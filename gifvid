@@ -1,0 +1,33 @@
+#!/bin/bash
+
+RED='\033[0;31m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+
+if ! [ -x "$(command -v ffmpeg)" ]; then
+  echo -e "${RED}Please install ffmpeg and then run gifvid${NC}" >&2
+  exit 1
+fi
+
+if ! [ $1 ]; then
+  echo -e "${RED}Please specify a source GIF${NC}" >&2
+  exit 1
+fi
+
+if [ ! -f $1 ]; then
+  echo -e "${RED}File not found!${NC}" >&2
+  exit 1
+fi
+
+output=$2
+if ! [ $2 ]; then
+  output="${1/gif/mp4}"
+fi
+
+ffmpeg -loglevel error -i $1 -c:v libx264 -crf 23 -profile:v baseline -level 3.0 -pix_fmt yuv420p -c:a aac -ac 2 -strict experimental -b:a 128k -movflags faststart $output
+
+if [ $? -eq 0 ]; then
+  echo -e "Successfully converted $1 to ${CYAN}$output.${NC}" >&2
+else
+  echo -e "${RED}Conversion failed${NC}" >&2
+fi
