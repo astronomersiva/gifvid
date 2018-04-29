@@ -1,7 +1,7 @@
 # gifvid
 Converts a GIF to an MP4 using ffmpeg.
 
-Based on the blog [Replace Animated GIFs](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/replace-animated-gifs-with-video/) with Video by Jeremy Wagner.
+Based on the blog [Replace Animated GIFs with Video](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/replace-animated-gifs-with-video/) by Jeremy Wagner.
 
 ### Why?
 
