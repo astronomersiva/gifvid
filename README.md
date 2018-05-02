@@ -16,6 +16,17 @@ Because the command given in the blog produces a video that is not supported by 
 
 ### Usage
 
-`gifvid source destination`
+`gifvid source`
 
-`source` is mandatory. If `destination` is not given, the converted video will be written to `source.mp4`.
+`source` is mandatory. The converted video will be written to `source.mp4`.
+
+### CLI Flags
+
+`-s`
+`--src` - Specify the source.
+
+`-d`
+`--dest` - Specify the destination. Will be `source.mp4` if not given.
+
+`-c`
+`--crf` - Constant Rate Factor. Defaults to `25`. Lower the number, higher the quality and file size.
